@@ -9,8 +9,8 @@ public class Player : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            GameObject bulletObject = Instantiate(bulletPrefab);
-            bulletObject.transform.position = transform.position + transform.forward;
+            GameObject bulletObject = Instantiate(bulletPrefab, transform.position + Vector3.forward, Quaternion.identity);
+
         }
     }
 }
