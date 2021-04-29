@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Enemy
   - Bullet
+  - Wall
+  - Friend
+  - GameOverPanel
+  - JoystickPanel
   layers:
   - Default
   - TransparentFX

@@ -1,24 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Bullet : MonoBehaviour
 {
     [SerializeField] float speed = 8f;
+    GameObject GameOverPanel;
+    GameObject Joystick;
 
-    LineRenderer lineRenderer;
-    List<Vector3> path = new List<Vector3>(); 
     void Start()
     {
-        lineRenderer = FindObjectOfType<LaserScript>().GetComponentInChildren<LineRenderer>();
-        for(int i = 0; i<lineRenderer.positionCount; i++){
-            path.Add(lineRenderer.GetPosition(i));
 
-        }
-
-
-        transform.position = path[0];
-        StartCoroutine(Move());
+        GameOverPanel = GameObject.FindGameObjectWithTag("GameOverPanel");
+        
+        GameOverPanel = GameObject.FindGameObjectWithTag("GameOverPanel");
+        LineRenderer lineRenderer = FindObjectOfType<LaserScript>().GetComponent<LineRenderer>();
+        Vector3 dir = lineRenderer.GetPosition(1) - lineRenderer.GetPosition(0);
+        GetComponent<Rigidbody>().velocity = dir.normalized * speed;
     }
 
 
@@ -33,20 +33,22 @@ public class Bullet : MonoBehaviour
             Destroy(other.gameObject);
             Destroy(this.gameObject);
         }
-    }
-    IEnumerator Move()
-    {
-        for(int i = 1; i < path.Count; i++)
+        if(other.gameObject.tag == "Wall")
         {
-            while(transform.position != path[i])
-            {
-            float distance = Vector3.Distance(transform.position, path[i]);
-            float time = distance / speed;
-            transform.position = Vector3.MoveTowards(transform.position, path[i], .1f);
-            yield return new WaitForEndOfFrame();
-            }
+            Destroy(this.gameObject);
         }
-        
+        if(other.gameObject.tag == "Friend")
+        {
+            Destroy(other.gameObject);
+            Destroy(this.gameObject);
+            Joystick.gameObject.SetActive(false);
+            GameOverPanel.gameObject.SetActive(true);
+        }
+    }
+
+    public void Replay()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
 

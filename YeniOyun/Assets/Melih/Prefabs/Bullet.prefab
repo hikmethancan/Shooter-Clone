@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3393805026450683910}
   - component: {fileID: 3393805026450683905}
   - component: {fileID: 5931752658740914020}
+  - component: {fileID: -4352344478853386834}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Bullet
@@ -109,3 +110,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
+  GameOverPanel: {fileID: 7756843027565639261, guid: f6451a8679c92974b921efaf530e871a, type: 3}
+  Joystick: {fileID: 5848022362994728248, guid: 9c1e01afb128adc45bbc06d9b011f3e8, type: 3}
+--- !u!54 &-4352344478853386834
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3393805026450683907}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

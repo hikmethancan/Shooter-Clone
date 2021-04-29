@@ -46,7 +46,8 @@ public class LaserScript : MonoBehaviour
 
                 to =  Vector3.Reflect(to,hit.normal);
                 from = hit.point;
-                if(hit.transform.gameObject.tag == "Bullet") return;
+                if(hit.transform.gameObject.tag == "Bullet" || hit.transform.gameObject.tag == "Wall" || hit.transform.gameObject.tag == "Enemy") return;
+                
                 DrawLine();
                 
                 
