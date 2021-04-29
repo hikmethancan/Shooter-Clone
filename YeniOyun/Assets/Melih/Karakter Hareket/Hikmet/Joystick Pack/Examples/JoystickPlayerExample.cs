@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class JoystickPlayerExample : MonoBehaviour
 {
-    //public float speed;
     public FixedJoystick variableJoystick;
     public Rigidbody rb;
+    public float rotateVertical;
+    public float rotateHorizontal;
+    public float speed;
 
     public void FixedUpdate()
     {
-        //Vector3 direction = Vector3.forward * variableJoystick.Vertical + Vector3.right * variableJoystick.Horizontal;
-        //rb.AddForce(direction * speed * Time.fixedDeltaTime, ForceMode.VelocityChange);
         float angle = Mathf.Atan2(variableJoystick.Horizontal, variableJoystick.Vertical) * Mathf.Rad2Deg;
-        this.transform.rotation = Quaternion.Euler(new Vector3(0, angle, 0));
+        rotateHorizontal = variableJoystick.Horizontal * -1f;
+        rotateVertical = variableJoystick.Vertical * 1f;
+        transform.Rotate(0, angle * speed, 0);
+
     }
 }

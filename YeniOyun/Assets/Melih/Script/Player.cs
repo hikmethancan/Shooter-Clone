@@ -7,10 +7,16 @@ public class Player : MonoBehaviour
     public GameObject bulletPrefab;
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
-        {
-            GameObject bulletObject = Instantiate(bulletPrefab, transform.position + Vector3.forward, Quaternion.identity);
+        //if(Input.GetMouseButtonDown(0))
+        //{
+        //    GameObject bulletObject = Instantiate(bulletPrefab, transform.position + Vector3.forward, Quaternion.identity);
 
-        }
+        //}
+        
+    }
+
+    public void method2()
+    {
+        GameObject bulletObject = Instantiate(bulletPrefab, transform.position + Vector3.forward, Quaternion.identity);
     }
 }
