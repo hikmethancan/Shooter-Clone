@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameOver : MonoBehaviour
+public class Play : MonoBehaviour
 {
     
-
-    void Replay()
+    public void PlayGame()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("1");
     }
+
+   
 }

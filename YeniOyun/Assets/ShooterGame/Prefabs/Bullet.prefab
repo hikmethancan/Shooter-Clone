@@ -109,9 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fda8789b2972d1246b94962f180be769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
-  GameOverPanel: {fileID: 7756843027565639261, guid: f6451a8679c92974b921efaf530e871a, type: 3}
-  Joystick: {fileID: 5848022362994728248, guid: 9c1e01afb128adc45bbc06d9b011f3e8, type: 3}
+  speed: 15
 --- !u!54 &-4352344478853386834
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -9,13 +9,15 @@ public class Bullet : MonoBehaviour
     [SerializeField] float speed = 8f;
     GameObject GameOverPanel;
     GameObject Joystick;
+    private GOScript GOScript;
+    public static int scenenumber;
 
     void Start()
     {
-
+        GOScript = GetComponent<GOScript>();
         GameOverPanel = GameObject.FindGameObjectWithTag("GameOverPanel");
         
-        GameOverPanel = GameObject.FindGameObjectWithTag("GameOverPanel");
+        //GameOverPanel = GameObject.FindGameObjectWithTag("GameOverPanel");
         LineRenderer lineRenderer = FindObjectOfType<LaserScript>().GetComponent<LineRenderer>();
         Vector3 dir = lineRenderer.GetPosition(1) - lineRenderer.GetPosition(0);
         GetComponent<Rigidbody>().velocity = dir.normalized * speed;
@@ -41,14 +43,18 @@ public class Bullet : MonoBehaviour
         {
             Destroy(other.gameObject);
             Destroy(this.gameObject);
-            Joystick.gameObject.SetActive(false);
-            GameOverPanel.gameObject.SetActive(true);
+            scenenumber = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene("GameOverScene");
+           
+            
+            //Joystick.gameObject.SetActive(false);
+            //GameOverPanel.gameObject.SetActive(true);
         }
     }
 
-    public void Replay()
+  /*  public void Replay()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
+    }*/
 }
 
