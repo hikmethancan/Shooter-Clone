@@ -18,14 +18,14 @@ public class Player : MonoBehaviour
         EnemyList = GameObject.FindGameObjectsWithTag("Enemy");
         if(EnemyList.Length == 0)
         {
-            if (SceneManager.GetActiveScene().buildIndex != 3)
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            }
-            else
-            {
-                SceneManager.LoadScene(0);
-            }
+            //if (SceneManager.GetActiveScene().buildIndex != 3)
+            //{
+            //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            //}
+            //else
+            //{
+            //    SceneManager.LoadScene(0);
+            //}
         }
     }
 
