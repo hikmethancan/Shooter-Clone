@@ -13,9 +13,10 @@ public class JoystickPlayerExample : MonoBehaviour
     public void FixedUpdate()
     {
         float angle = Mathf.Atan2(variableJoystick.Horizontal, variableJoystick.Vertical) * Mathf.Rad2Deg;
-        rotateHorizontal = variableJoystick.Horizontal * -1f;
-        rotateVertical = variableJoystick.Vertical * 1f;
-        transform.Rotate(0, angle * speed, 0);
+        if(angle!=0){
+        angle = Mathf.MoveTowardsAngle(transform.rotation.eulerAngles.y, angle, speed);
+        transform.rotation = Quaternion.Euler(0,angle,0);
 
+        }
     }
 }

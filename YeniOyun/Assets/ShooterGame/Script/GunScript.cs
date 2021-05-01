@@ -2,21 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LaserScript : MonoBehaviour
+public class GunScript : MonoBehaviour
 {
-
+    public GameObject bulletPrefab;
     private LineRenderer LineRenderer;
     Vector3 from;
     Vector3 to;
     int index = 0;
+    public int ammo = 3;
     void Start()
     {
-
         LineRenderer = GetComponent<LineRenderer>();
-        
-
-
-
     }
 
     private void FixedUpdate()
@@ -26,6 +22,7 @@ public class LaserScript : MonoBehaviour
         LineRenderer.positionCount = 1;
         LineRenderer.SetPosition(0,transform.position);
         index = 0;
+        if(GameObject.FindGameObjectWithTag("Bullet")==null)
         DrawLine();
         
     }
@@ -41,9 +38,7 @@ public class LaserScript : MonoBehaviour
             if(hit.collider)
             {
                 index = LineRenderer.positionCount++;
-                Debug.Log(index+ " " + LineRenderer.positionCount );
                 LineRenderer.SetPosition(index, hit.point);
-
                 to =  Vector3.Reflect(to,hit.normal);
                 from = hit.point;
                 if(hit.transform.gameObject.tag == "Bullet" || hit.transform.gameObject.tag == "Wall" || hit.transform.gameObject.tag == "Enemy" || hit.transform.gameObject.tag=="Friend") return;
@@ -60,5 +55,12 @@ public class LaserScript : MonoBehaviour
             LineRenderer.SetPosition(index, to * 1000);
             
         }
+    }
+
+    public void fireButton()
+    {
+        if(GameObject.FindGameObjectWithTag("Bullet")==null && ammo > 0)
+        Instantiate(bulletPrefab, transform.position, transform.rotation);
+        ammo--;
     }
 }
