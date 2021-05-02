@@ -1,15 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GunScript : MonoBehaviour
 {
     public GameObject bulletPrefab;
     private LineRenderer LineRenderer;
+    public Text ammoText;
+
     Vector3 from;
     Vector3 to;
+
     int index = 0;
     public int ammo = 3;
+
+    
+    
     void Start()
     {
         LineRenderer = GetComponent<LineRenderer>();
@@ -24,6 +31,7 @@ public class GunScript : MonoBehaviour
         index = 0;
         if(GameObject.FindGameObjectWithTag("Bullet")==null)
         DrawLine();
+        ammoText.text = string.Format("{0}",ammo);
         
     }
 
@@ -61,6 +69,7 @@ public class GunScript : MonoBehaviour
     {
         if(GameObject.FindGameObjectWithTag("Bullet")==null && ammo > 0)
         Instantiate(bulletPrefab, transform.position, transform.rotation);
+        if(ammo!=0)
         ammo--;
     }
 }

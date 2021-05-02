@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
         if(other.gameObject.tag == "Enemy"){
-            gameManager.HitEnemy(other.gameObject);
+            Destroy(other.gameObject);
             Destroy(this.gameObject);
         }
         if(other.gameObject.tag == "Wall")
@@ -28,8 +28,9 @@ public class Bullet : MonoBehaviour
         }
         if(other.gameObject.tag == "Friend")
         {
-            gameManager.GameOver(other.gameObject);
             Destroy(this.gameObject);
+            Destroy(other.gameObject);
+            gameManager.GameOver();
         }
     }
 }

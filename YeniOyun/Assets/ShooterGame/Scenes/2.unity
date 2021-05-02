@@ -1335,6 +1335,11 @@ Transform:
   m_Father: {fileID: 1046407955}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &939790700 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 559619350458847623, guid: 449b929312cb5423f9493210f173a158, type: 3}
+  m_PrefabInstance: {fileID: 1465001983}
+  m_PrefabAsset: {fileID: 0}
 --- !u!850595691 &951564946
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -1396,6 +1401,17 @@ LightingSettings:
   m_PVRFilteringAtrousPositionSigmaDirect: 0.5
   m_PVRFilteringAtrousPositionSigmaIndirect: 2
   m_PVRFilteringAtrousPositionSigmaAO: 1
+--- !u!114 &954331536 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1454078283047947680, guid: 449b929312cb5423f9493210f173a158, type: 3}
+  m_PrefabInstance: {fileID: 1465001983}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1487,11 +1503,31 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc475bc8a4a2607438d997043c2b105f, type: 3}
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &1046407954
 GameObject:
   m_ObjectHideFlags: 0
@@ -1569,6 +1605,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 3393805026450683907, guid: 04f104bf91f6174499873a611b243be6, type: 3}
+  ammoText: {fileID: 954331536}
+  ammo: 3
 --- !u!120 &1340603990
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1732,6 +1770,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 559619351576849547, guid: 449b929312cb5423f9493210f173a158, type: 3}
+      propertyPath: inGamePanel
+      value: 
+      objectReference: {fileID: 939790700}
     - target: {fileID: 559619351576849548, guid: 449b929312cb5423f9493210f173a158, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -1751,6 +1793,10 @@ PrefabInstance:
     - target: {fileID: 559619352254696819, guid: 449b929312cb5423f9493210f173a158, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: GunScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3937130697723682589, guid: 449b929312cb5423f9493210f173a158, type: 3}
+      propertyPath: m_Name
+      value: InfoPanel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 449b929312cb5423f9493210f173a158, type: 3}

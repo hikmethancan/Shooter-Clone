@@ -1761,6 +1761,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 3393805026450683907, guid: 04f104bf91f6174499873a611b243be6, type: 3}
+  ammoText: {fileID: 1727647750}
+  ammo: 5
 --- !u!120 &1340603990
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -2066,10 +2068,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 559619350458847623, guid: 449b929312cb5423f9493210f173a158, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 559619351576849546, guid: 449b929312cb5423f9493210f173a158, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -2118,24 +2116,23 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 559619351617423939, guid: 449b929312cb5423f9493210f173a158, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 559619352254696819, guid: 449b929312cb5423f9493210f173a158, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1340603989}
-    - target: {fileID: 559619352254696819, guid: 449b929312cb5423f9493210f173a158, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: fireButton
-      objectReference: {fileID: 0}
-    - target: {fileID: 559619352254696819, guid: 449b929312cb5423f9493210f173a158, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: GunScript, Assembly-CSharp
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 449b929312cb5423f9493210f173a158, type: 3}
+--- !u!114 &1727647750 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1454078283047947680, guid: 449b929312cb5423f9493210f173a158, type: 3}
+  m_PrefabInstance: {fileID: 1727647749}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2075866913
 GameObject:
   m_ObjectHideFlags: 0
