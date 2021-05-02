@@ -8,12 +8,18 @@ public class Bullet : MonoBehaviour
 {
     GameManager gameManager;
     [SerializeField] float speed = 8f;
+    Rigidbody rb;
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         gameManager = FindObjectOfType<GameManager>();
         LineRenderer lineRenderer = FindObjectOfType<GunScript>().GetComponent<LineRenderer>();
         Vector3 dir = lineRenderer.GetPosition(1) - lineRenderer.GetPosition(0);
-        GetComponent<Rigidbody>().velocity = dir.normalized * speed;
+        rb.velocity = dir.normalized * speed;
+    }
+    void Update()
+    {
+        transform.rotation = Quaternion.LookRotation(rb.velocity);
     }
 
     void OnCollisionEnter(Collision other)
