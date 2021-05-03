@@ -67,11 +67,23 @@ public class GunScript : MonoBehaviour
 
     public void fireButton()
     {
-        if(GameObject.FindGameObjectWithTag("Bullet")==null && ammo > 0)
+
+        if (GameObject.FindGameObjectWithTag("Bullet") == null && ammo > 0)
         {
+            PlayerAnimation.Throw();
+
+            Invoke(nameof(bullet), 0.5f);
+
+
+            if (ammo != 0)
+            {
+                ammo--;
+            }
+
+        }
+    }
+    void bullet()
+    {
         Instantiate(bulletPrefab, transform.position, transform.rotation);
-        if(ammo!=0)
-        ammo--;
-        }   
     }
 }

@@ -27,10 +27,11 @@ public class GameManager : MonoBehaviour
    {
       if(GameObject.FindGameObjectWithTag("Bullet")==null && gunScript.ammo == 0 && GameObject.FindGameObjectWithTag("Enemy")!=null)
       GameOver();
-      if(GameObject.FindGameObjectWithTag("Enemy")==null)
-      LevelCompleted();
-
-   }
+        if (GameObject.FindGameObjectWithTag("Enemy") == null) { 
+            PlayerAnimation.win();
+            LevelCompleted();
+        }
+    }
 
    public void GameOverPanelON(){gameOverPanel.gameObject.SetActive(true);}
    public void GameOverPanelOFF(){gameOverPanel.gameObject.SetActive(false);}
