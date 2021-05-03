@@ -1,13 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class JoystickPlayerExample : MonoBehaviour
 {
     public FixedJoystick variableJoystick;
     public Rigidbody rb;
-    public float rotateVertical;
-    public float rotateHorizontal;
     public float speed;
 
     public void FixedUpdate()
@@ -16,7 +12,6 @@ public class JoystickPlayerExample : MonoBehaviour
         if(angle!=0){
         angle = Mathf.MoveTowardsAngle(transform.rotation.eulerAngles.y, angle, speed);
         transform.rotation = Quaternion.Euler(0,angle,0);
-
         }
     }
 }

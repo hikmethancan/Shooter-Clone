@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
@@ -12,20 +10,10 @@ public class PlayerAnimation : MonoBehaviour
     }
     public static void Throw()
     {
-        if (GameObject.FindGameObjectsWithTag("Bullet") != null && anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-        {
-            anim.SetTrigger("Throw");
-        }
-        anim.SetTrigger("Stop");
+        anim.SetTrigger("Throw");  
     }
     public static void win()
     {
-
-        if ((anim.GetCurrentAnimatorStateInfo(0).IsName("Idle") || anim.GetCurrentAnimatorStateInfo(0).IsName("Throw")))
-        {
-            anim.SetTrigger("Win");
-
-        }
-
+        anim.SetTrigger("Win");
     }
 }
