@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -32,20 +33,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
-   public void GameOverPanelON(){gameOverPanel.SetActive(true);}
-   public void GameOverPanelOFF(){gameOverPanel.SetActive(false);}
+   public void GameOverPanelON(){gameOverPanel.gameObject.SetActive(true);}
+   public void GameOverPanelOFF(){gameOverPanel.gameObject.SetActive(false);}
 
-   public void InGamePanelON(){inGamePanel.SetActive(true);}
-   public void InGamePanelOFF(){inGamePanel.SetActive(false);}
+   public void InGamePanelON(){inGamePanel.gameObject.SetActive(true);}
+   public void InGamePanelOFF(){inGamePanel.gameObject.SetActive(false);}
 
-   public void StartPanelON(){startPanel.SetActive(true);}
-   public void StartPanelOFF(){startPanel.SetActive(false);}
+   public void StartPanelON(){startPanel.gameObject.SetActive(true);}
+   public void StartPanelOFF(){startPanel.gameObject.SetActive(false);}
 
-   public void NextLevelPanelON(){nextLevelPanel.SetActive(true);}
-   public void NextLevelPanelOFF(){nextLevelPanel.SetActive(false);}
+   public void NextLevelPanelON(){nextLevelPanel.gameObject.SetActive(true);}
+   public void NextLevelPanelOFF(){nextLevelPanel.gameObject.SetActive(false);}
 
-   public void InfoPanelON(){infoPanel.SetActive(true);}
-   public void InfoPanelOFF(){infoPanel.SetActive(false);}
+   public void InfoPanelON(){infoPanel.gameObject.SetActive(true);}
+   public void InfoPanelOFF(){infoPanel.gameObject.SetActive(false);}
 
 
 
