@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
     Rigidbody rb;
     void Start()
     {
+      
         rb = GetComponent<Rigidbody>();
         gameManager = FindObjectOfType<GameManager>();
         LineRenderer lineRenderer = FindObjectOfType<GunScript>().GetComponent<LineRenderer>();
@@ -25,7 +26,8 @@ public class Bullet : MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
         if(other.gameObject.tag == "Enemy"){
-            Destroy(other.gameObject);
+
+            other.gameObject.tag = "Untagged";
             Destroy(this.gameObject);
         }
         if(other.gameObject.tag == "Wall")
