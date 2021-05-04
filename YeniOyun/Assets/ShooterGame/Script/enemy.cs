@@ -17,7 +17,6 @@ public class enemy : MonoBehaviour
             GetComponent<Animator>().enabled = false;
             setRigidbodyState(false);
             setColliderState(true);
-           
         }
 
     }

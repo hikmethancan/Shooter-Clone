@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class Bullet : MonoBehaviour
 {
@@ -11,7 +9,6 @@ public class Bullet : MonoBehaviour
     Rigidbody rb;
     void Start()
     {
-      
         rb = GetComponent<Rigidbody>();
         gameManager = FindObjectOfType<GameManager>();
         LineRenderer lineRenderer = FindObjectOfType<GunScript>().GetComponent<LineRenderer>();
@@ -25,9 +22,9 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if(other.gameObject.tag == "Enemy"){
-
-            other.gameObject.tag = "Untagged";
+        if(other.gameObject.tag == "Enemy")
+        {
+            other.gameObject.tag = "EnemyIsDead";
             Destroy(this.gameObject);
         }
         if(other.gameObject.tag == "Wall")
