@@ -3,88 +3,70 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
 public class GameManager : MonoBehaviour
 {
-   public GameObject inGamePanel;
-   public GameObject gameOverPanel;
-   public GameObject startPanel;
-   public GameObject nextLevelPanel;
-   public GameObject infoPanel;
-
-   
-   GunScript gunScript;
-
-   GameObject[] EnemyList;
-
+   [Tooltip("Start,ÝnGame,Next,GameOver")]
+   public List<GameObject> Panels;
+   public Text AmmoText;
+   Player player;
    void Start()
    {
-      gunScript = FindObjectOfType<GunScript>();
-      EnemyList = GameObject.FindGameObjectsWithTag("Enemy");
-   }
+        player = FindObjectOfType<Player>();
+        WhenStart();
+    }
 
    void Update()
    {
-      if(GameObject.FindGameObjectWithTag("Bullet") == null && gunScript.ammo == 0 && GameObject.FindGameObjectWithTag("Enemy")!=null)
-      GameOver();
-        if (GameObject.FindGameObjectWithTag("Enemy") == null) { 
-            PlayerAnimation.win();
+        if (player != null)
+        {
+            AmmoText.text = player.ammo.ToString();
+            if (player.ammo == 0 && GameObject.FindGameObjectWithTag("Enemy") != null && !player.fire)
+                GameOver();
+        }
+        if (GameObject.FindGameObjectWithTag("Enemy") == null) {
+            player.Win();
             LevelCompleted();
         }
     }
-
-   public void GameOverPanelON(){gameOverPanel.SetActive(true);}
-   public void GameOverPanelOFF(){gameOverPanel.SetActive(false);}
-
-   public void InGamePanelON(){inGamePanel.SetActive(true);}
-   public void InGamePanelOFF(){inGamePanel.SetActive(false);}
-
-   public void StartPanelON(){startPanel.SetActive(true);}
-   public void StartPanelOFF(){startPanel.SetActive(false);}
-
-   public void NextLevelPanelON(){nextLevelPanel.SetActive(true);}
-   public void NextLevelPanelOFF(){nextLevelPanel.SetActive(false);}
-
-   public void InfoPanelON(){infoPanel.SetActive(true);}
-   public void InfoPanelOFF(){infoPanel.SetActive(false);}
-
-
-
-
+    void WhenStart()
+    {
+        for (int i = 0; i < Panels.Count-1; i++)
+        {
+            Panels[i+1].SetActive(false);
+        }
+    }
    public void GameOver(){
-      InfoPanelOFF();
-      InGamePanelOFF();
-      GameOverPanelON();
-      Invoke("Restart",3);
+        for (int i = 0; i < Panels.Count-1; i++)
+        {
+            Panels[i].SetActive(false);
+            Panels[3].SetActive(true);
+        }
+        Invoke("Restart",3);
    }
-
    public void LevelCompleted()
    {
-      InGamePanelOFF();
-      InfoPanelOFF();
-      NextLevelPanelON();
+        for (int i = 0; i < Panels.Count-1; i++)
+        {
+            Panels[i].SetActive(false);
+            Panels[2].SetActive(true);
+        }
    }
-
    public void StartGame()
    {
-      StartPanelOFF();
-      InGamePanelON();
-      InfoPanelON();
-   }
-
+        for (int i = 0; i < Panels.Count-1; i++)
+        {
+            Panels[i].SetActive(false);
+            Panels[1].SetActive(true);
+        }
+    }
    public void Restart()
    {
       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
    }
-
-   
-
    public void NextLevel()
    {
 
       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
    }
-
    public void CloseAd(){}
-
 }

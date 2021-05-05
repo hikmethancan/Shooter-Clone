@@ -1,42 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 public class Bullet : MonoBehaviour
 {
     GameManager gameManager;
-    [SerializeField] float speed = 8f;
-    Rigidbody rb;
+    Player player;
+    public GameObject Deadbody;
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
         gameManager = FindObjectOfType<GameManager>();
-        LineRenderer lineRenderer = FindObjectOfType<GunScript>().GetComponent<LineRenderer>();
-        Vector3 dir = lineRenderer.GetPosition(1) - lineRenderer.GetPosition(0);
-        rb.velocity = dir.normalized * speed;
-    }
-    void Update()
-    {
-        transform.rotation = Quaternion.LookRotation(rb.velocity);
+        player = FindObjectOfType<Player>();
     }
 
-    void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if(other.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Friend")
         {
-            other.gameObject.tag = "EnemyIsDead";
-            Destroy(this.gameObject);
+            if (collision.gameObject.tag == "Friend")
+            {
+                gameManager.GameOver();
+            }
+            Hitted(collision.transform);
         }
-        if(other.gameObject.tag == "Wall")
-        {
-            Destroy(this.gameObject);
-        }
-        if(other.gameObject.tag == "Friend")
-        {
-            Destroy(this.gameObject);
-            Destroy(other.gameObject);
-            gameManager.GameOver();
-        }
+    }
+    void Hitted(Transform Character)
+    {
+        player.fire = false;
+        Destroy(Character.gameObject);
+        Instantiate(Deadbody, Character.position, Character.rotation);
+        Destroy(gameObject);
     }
 }
 
