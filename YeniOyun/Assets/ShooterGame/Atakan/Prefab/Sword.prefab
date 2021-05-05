@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6148865786034385050
+--- !u!1 &9049656548666880019
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,45 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 621293232398664828}
-  - component: {fileID: 1996596009978792658}
-  - component: {fileID: 4822737658461712902}
+  - component: {fileID: 8565008678567275177}
+  - component: {fileID: 4716075399584212236}
+  - component: {fileID: 7392142976249237958}
   m_Layer: 0
-  m_Name: Sniper
+  m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &621293232398664828
+--- !u!4 &8565008678567275177
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6148865786034385050}
-  m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 7.1208377, y: 2.8060832, z: 3.2736037}
-  m_LocalScale: {x: 4, y: 8, z: 8}
+  m_GameObject: {fileID: 9049656548666880019}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.07, z: 5.37}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 90}
---- !u!33 &1996596009978792658
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &4716075399584212236
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6148865786034385050}
-  m_Mesh: {fileID: -8310518740751045040, guid: 4f6087a5969df2c499b2894b1166e806, type: 3}
---- !u!23 &4822737658461712902
+  m_GameObject: {fileID: 9049656548666880019}
+  m_Mesh: {fileID: -4788864755773318123, guid: 1de5c8f40aa47ac44a7b41b88f548d92, type: 3}
+--- !u!23 &7392142976249237958
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6148865786034385050}
+  m_GameObject: {fileID: 9049656548666880019}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -59,7 +59,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: afd924ac6f2962a4496111a2c093e25c, type: 2}
+  - {fileID: 2100000, guid: 0de6d0bfc3f04734a89bc349b13eca85, type: 2}
   - {fileID: 2100000, guid: 65f5cdc4385ec8d4386b9131abd5a255, type: 2}
+  - {fileID: 2100000, guid: 0de6d0bfc3f04734a89bc349b13eca85, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
