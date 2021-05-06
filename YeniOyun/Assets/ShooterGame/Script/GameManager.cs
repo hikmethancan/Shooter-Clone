@@ -5,9 +5,12 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
-   [Tooltip("Start,�nGame,Next,GameOver")]
+   [Tooltip("Start,InGame,Next,GameOver")]
    public List<GameObject> Panels;
-   public Text AmmoText;
+
+   public List<GameObject> nextLevelPanels;
+   public Image SniperFill;
+   private bool isLevelCompleted = false;
    Player player;
    void Start()
    {
@@ -19,7 +22,7 @@ public class GameManager : MonoBehaviour
    {
         if (player != null)
         {
-            AmmoText.text = player.ammo.ToString();
+            
             if (player.ammo == 0 && GameObject.FindGameObjectWithTag("Enemy") != null && !player.fire)
                 GameOver();
         }
@@ -30,34 +33,55 @@ public class GameManager : MonoBehaviour
     }
     void WhenStart()
     {
-        for (int i = 0; i < Panels.Count-1; i++)
-        {
-            Panels[i+1].SetActive(false);
-        }
-    }
-   public void GameOver(){
-        for (int i = 0; i < Panels.Count-1; i++)
+        for (int i = 0; i < Panels.Count; i++)
         {
             Panels[i].SetActive(false);
-            Panels[3].SetActive(true);
         }
+        Panels[0].SetActive(true);
+
+    }
+   public void GameOver(){
+        for (int i = 0; i < Panels.Count; i++)
+        {
+            Panels[i].SetActive(false);
+        }
+        Panels[3].SetActive(true);
         Invoke("Restart",3);
    }
    public void LevelCompleted()
    {
-        for (int i = 0; i < Panels.Count-1; i++)
+       if (isLevelCompleted) return;
+       if (SceneManager.GetActiveScene().buildIndex % 3 == 2)
+       {
+           
+           nextLevelPanels[0].SetActive(true);
+           
+           SniperFill.fillAmount = .2f * SceneManager.GetActiveScene().buildIndex/3;
+           
+
+       }
+       else
+       {
+           nextLevelPanels[(int)Random.Range(1f,2.9f)].SetActive(true);
+           //her 3 bölümün 2sinde random bir sayı alıp int'e çeviriyor ve rastgele 2sinden birisi actif olmuş oluyor
+       }
+        for (int i = 0; i < Panels.Count; i++)
         {
             Panels[i].SetActive(false);
-            Panels[2].SetActive(true);
         }
+        Panels[2].SetActive(true);
+        isLevelCompleted = true;
+
+
    }
    public void StartGame()
    {
         for (int i = 0; i < Panels.Count-1; i++)
         {
             Panels[i].SetActive(false);
-            Panels[1].SetActive(true);
+            
         }
+        Panels[1].SetActive(true);
     }
    public void Restart()
    {

@@ -2,7 +2,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     GameManager gameManager;
-    Player player;
+    private Player player;
     public GameObject Deadbody;
     void Start()
     {
@@ -12,16 +12,17 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Friend")
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            if (collision.gameObject.tag == "Friend")
-            {
-                gameManager.GameOver();
-            }
-            Hitted(collision.transform);
+            Hit(collision.transform);
+        }
+        else if (collision.gameObject.CompareTag("Friend"))
+        {
+            gameManager.GameOver();
+            Destroy(gameObject);
         }
     }
-    void Hitted(Transform Character)
+    void Hit(Transform Character)
     {
         player.fire = false;
         Destroy(Character.gameObject);
