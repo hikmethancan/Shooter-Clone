@@ -82,6 +82,7 @@ public class Player : MonoBehaviour
     }
     public void Win()
     {
+        fire = true;
         GetComponent<Animator>().SetTrigger("Win");
     }
 
