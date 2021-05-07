@@ -3,8 +3,8 @@ public class Bullet : MonoBehaviour
 {
     GameManager gameManager;
     private Player player;
-    public GameObject Deadbody;
-    void Start()
+    public GameObject deadBody;
+    private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
         player = FindObjectOfType<Player>();
@@ -22,11 +22,11 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    void Hit(Transform Character)
+    void Hit(Transform character)
     {
         player.fire = false;
-        Destroy(Character.gameObject);
-        Instantiate(Deadbody, Character.position, Character.rotation);
+        Destroy(character.gameObject);
+        Instantiate(deadBody, character.position, character.rotation);
         Destroy(gameObject);
     }
 }

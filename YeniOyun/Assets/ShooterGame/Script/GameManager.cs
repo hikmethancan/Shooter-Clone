@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,19 +5,18 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
    [Tooltip("Start,InGame,Next,GameOver")]
-   public List<GameObject> Panels;
+   public List<GameObject> panels;
 
    public List<GameObject> nextLevelPanels;
-   public Image SniperFill;
-   private bool isLevelCompleted = false;
-   Player player;
-   void Start()
+   public Image sniperFill;
+   private bool isLevelCompleted;
+   private Player player;
+   private void Start()
    {
         player = FindObjectOfType<Player>();
         WhenStart();
     }
-
-   void Update()
+   private void Update()
    {
         if (player != null)
         {
@@ -26,29 +24,30 @@ public class GameManager : MonoBehaviour
             if (player.ammo == 0 && GameObject.FindGameObjectWithTag("Enemy") != null && !player.fire)
                 GameOver();
         }
-        if (GameObject.FindGameObjectWithTag("Enemy") == null) {
-            player.Win();
+        if (GameObject.FindGameObjectWithTag("Enemy") == null) 
+        { 
+            player.Win(); 
             LevelCompleted();
         }
-    }
-    void WhenStart()
+   }
+   private void WhenStart()
     {
-        for (int i = 0; i < Panels.Count; i++)
+        foreach (GameObject panel in panels)
         {
-            Panels[i].SetActive(false);
+            panel.SetActive(false);
         }
-        Panels[0].SetActive(true);
+        panels[0].SetActive(true);
 
     }
    public void GameOver(){
-        for (int i = 0; i < Panels.Count; i++)
-        {
-            Panels[i].SetActive(false);
-        }
-        Panels[3].SetActive(true);
-        Invoke("Restart",3);
+       foreach (GameObject panel in panels)
+       {
+           panel.SetActive(false);
+       }
+       panels[3].SetActive(true);
+       Invoke(nameof(Restart),3);
    }
-   public void LevelCompleted()
+   private void LevelCompleted()
    {
        if (isLevelCompleted) return;
        if (SceneManager.GetActiveScene().buildIndex % 3 == 2)
@@ -56,7 +55,7 @@ public class GameManager : MonoBehaviour
            
            nextLevelPanels[0].SetActive(true);
            
-           SniperFill.fillAmount = .2f * SceneManager.GetActiveScene().buildIndex/3;
+           sniperFill.fillAmount = .2f * SceneManager.GetActiveScene().buildIndex/3;
            
 
        }
@@ -65,23 +64,23 @@ public class GameManager : MonoBehaviour
            nextLevelPanels[(int)Random.Range(1f,2.9f)].SetActive(true);
            //her 3 bölümün 2sinde random bir sayı alıp int'e çeviriyor ve rastgele 2sinden birisi actif olmuş oluyor
        }
-        for (int i = 0; i < Panels.Count; i++)
-        {
-            Panels[i].SetActive(false);
-        }
-        Panels[2].SetActive(true);
-        isLevelCompleted = true;
+       foreach (GameObject panel in panels)
+       {
+           panel.SetActive(false);
+       }
+       panels[2].SetActive(true);
+       isLevelCompleted = true;
 
 
    }
    public void StartGame()
    {
-        for (int i = 0; i < Panels.Count-1; i++)
+        for (int i = 0; i < panels.Count-1; i++)
         {
-            Panels[i].SetActive(false);
+            panels[i].SetActive(false);
             
         }
-        Panels[1].SetActive(true);
+        panels[1].SetActive(true);
     }
    public void Restart()
    {

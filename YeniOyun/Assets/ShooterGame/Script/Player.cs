@@ -2,68 +2,66 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+
 public class Player : MonoBehaviour
 {
     public Transform handPos;
     public List<GameObject> ammoList = new List<GameObject>();
-    public GameObject bulletPrefab;
-    GameObject Shuriken;
-    public LineRenderer LineRenderer;
-    int index = 0;
-    public int ammo,ShrukenSpeed;
+    public GameObject shurikenPrefab;
+    public LineRenderer lineRenderer;
+    private int index;
+    public int ammo,shrukenSpeed;
     public bool fire;
     private void Start()
     {
         fire = false;
-        ShrukenSpeed = 8;
     }
-    void Update()
+    private void Update()
     {
         Vector3 from = handPos.position;
         Vector3 to = transform.forward;
-        LineRenderer.positionCount = 1;
-        LineRenderer.SetPosition(0, from);
+        lineRenderer.positionCount = 1;
+        lineRenderer.SetPosition(0, from);
         index = 0;
-        if (!fire)
-            DrawLine(from,to);
+        if (!fire) DrawLine(from,to);
+        
 
 
     }
     void DrawLine(Vector3 from,Vector3 to)
     {
         if (index > 5) return;
-        RaycastHit hit;
-        if (Physics.Raycast(from, to, out hit))
+        if (Physics.Raycast(from, to, out RaycastHit hit))
         {
             if (hit.collider)
             {
-                index = LineRenderer.positionCount++;
-                LineRenderer.SetPosition(index, hit.point);
+                index = lineRenderer.positionCount++;
+                lineRenderer.SetPosition(index, hit.point);
                 to = Vector3.Reflect(to, hit.normal);
                 from = hit.point;
                 if(hit.transform.gameObject.CompareTag("Wall"))
-                DrawLine(from,to);
+                    DrawLine(from,to);
             }
         }
-       else
+        else
         {
             to *= 100;
             to.y = 1;
-            index = LineRenderer.positionCount++;
-            LineRenderer.SetPosition(index, to);
+            index = lineRenderer.positionCount++;
+            lineRenderer.SetPosition(index, to);
         }
     }
-    public void fireButton()
+    public void FireButton()
     {
         
             
             ammoList.Last().SetActive(false);
             ammoList.Remove(ammoList.Last());
-            Shuriken = Instantiate(bulletPrefab, handPos.position, transform.rotation);
-            Shuriken.GetComponent<Rigidbody>().velocity = Shuriken.transform.forward * ShrukenSpeed;
+            GameObject shuriken = Instantiate(shurikenPrefab, handPos.position, transform.rotation);
+            shuriken.GetComponent<Rigidbody>().velocity = shuriken.transform.forward * shrukenSpeed;
             ammo--;
             
-            StartCoroutine(Timer(Shuriken));
+            StartCoroutine(Timer(shuriken));
         
     }
     IEnumerator Timer(GameObject shuriken)
