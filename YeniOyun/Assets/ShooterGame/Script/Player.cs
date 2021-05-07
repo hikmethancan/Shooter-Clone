@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     private int index;
     public int ammo, shrukenSpeed;
     public bool fire;
+    private Vector3 shurikenStartPosition;
 
     private void Start()
     {
@@ -64,7 +65,10 @@ public class Player : MonoBehaviour
 
         ammoList.Last().SetActive(false);
         ammoList.Remove(ammoList.Last());
-        GameObject shuriken = Instantiate(shurikenPrefab, handPos.position, transform.rotation);
+
+        
+        shurikenStartPosition.y = 1;
+        GameObject shuriken = Instantiate(shurikenPrefab, shurikenStartPosition, transform.rotation);
         shuriken.GetComponent<Rigidbody>().velocity = shuriken.transform.forward * shrukenSpeed;
         ammo--;
 
@@ -83,6 +87,7 @@ public class Player : MonoBehaviour
     {
         if (!fire && ammo > 0)
         {
+            shurikenStartPosition = handPos.position;
             fire = true;
             GetComponent<Animator>().SetTrigger("Throw");
         }
