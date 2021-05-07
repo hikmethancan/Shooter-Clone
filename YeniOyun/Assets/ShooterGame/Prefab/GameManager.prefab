@@ -403,7 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 539c798c0226c42b6ab04b44e8966037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Panels:
+  panels:
   - {fileID: 559619351617423939}
   - {fileID: 1866232175434179757}
   - {fileID: 497019699669949212}
@@ -412,7 +412,7 @@ MonoBehaviour:
   - {fileID: 4769403960762473147}
   - {fileID: 6252684776367297300}
   - {fileID: 4207778006844118238}
-  SniperFill: {fileID: 6796662702120456492}
+  sniperFill: {fileID: 6796662702120456492}
 --- !u!1 &559619351617423939
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,7 +891,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2739335102916509903
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1482,7 +1482,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: fireButton
+        m_MethodName: Throw
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
