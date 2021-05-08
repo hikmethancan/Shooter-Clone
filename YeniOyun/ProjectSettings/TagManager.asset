@@ -8,6 +8,8 @@ TagManager:
   - Wall
   - Friend
   - JoystickPanel
+  - Bullet
+  - Bomb
   layers:
   - Default
   - TransparentFX

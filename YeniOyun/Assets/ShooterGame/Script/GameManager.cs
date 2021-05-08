@@ -36,7 +36,14 @@ public class GameManager : MonoBehaviour
         {
             panel.SetActive(false);
         }
-        panels[0].SetActive(true);
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            panels[0].SetActive(true);
+        }
+        else
+        {
+            StartGame();
+        }
 
     }
    public void GameOver(){
