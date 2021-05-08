@@ -20,4 +20,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ShooterGame/Scenes/melih/Level 5.unity
     guid: a0b362f166a623b4aa5386f1bde87f19
+  - enabled: 1
+    path: Assets/ShooterGame/Scenes/yaren/1.Level.unity
+    guid: 8fbf604377f00fd40b81e3e2ffd1cbac
+  - enabled: 1
+    path: Assets/ShooterGame/Scenes/yaren/2.Level.unity
+    guid: 5c450cad8ed4e2545aae9970b4e1e195
+  - enabled: 1
+    path: Assets/ShooterGame/Scenes/yaren/3.Level.unity
+    guid: 40b06ee59d3dc734bbeff3bf4b88d3e3
+  - enabled: 1
+    path: Assets/ShooterGame/Scenes/yaren/4.Level.unity
+    guid: d28967380e314434498c9e48af3bb26f
+  - enabled: 1
+    path: Assets/ShooterGame/Scenes/yaren/5.Level.unity
+    guid: 9b2b845558424f643ac5721f0a254ebb
   m_configObjects: {}
